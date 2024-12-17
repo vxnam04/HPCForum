@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Auth;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', [HomeController::class,'checkUserType']);
+Route::get('/', [HomeController::class,'checkUserType','homepage'])->name('home');
 
 
 Route::get('/admin/dashboard', function () {
@@ -44,4 +44,10 @@ Route::get('/user/dashboard', function () {
 Route::middleware('auth')->get('/user-dashboard', [UserController::class, 'index'])->name('user.dashboard');
 use App\Http\Controllers\BlogController;
 
-Route::get('/baidang', [BlogController::class, 'index']);
+use App\Http\Controllers\PostController;
+
+Route::resource('/baidang', PostController::class);
+
+
+Route::get('/', [BlogController::class, 'index'])->name('home');
+

@@ -9,6 +9,19 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $table = 'posts'; // Tên bảng trong CSDL
-    protected $fillable = ['title', 'content']; // Các cột có thể gán giá trị hàng loạt
+    protected $table = 'baiviet';
+    protected $primaryKey = 'baiVietID';
+    public $incrementing = false;
+    protected $keyType = 'string';
+
+    protected $fillable = [
+        'baiVietID',
+        'tieuDe',
+        'noiDung',
+        'ngayDang',
+        'soLike',
+        'soBinhLuan',
+        'trangThaiDuyet',
+        'userID',
+    ];
 }
