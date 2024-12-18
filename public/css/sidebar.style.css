@@ -1,0 +1,81 @@
+.box-all-baidang {
+    display: flex;
+    justify-content: space-around;
+}
+.sizechu {
+    font-size: 1.5rem;
+}
+.sidebar {
+    width: 310px;
+    background-color: #f4f4f4;
+    padding: 15px;
+    padding-left: 30px;
+    border-right: 1px solid #ddd;
+    height: 100vh;
+}
+.mauchu {
+    font-weight: bold;
+}
+.mauchu:hover {
+    color: #16a085;
+}
+.sidebar h2 {
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 10px 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li ul li:hover {
+    color: #1abc9c;
+}
+
+.sidebar ul li ul {
+    display: none;
+    margin-left: 15px;
+}
+
+.sidebar ul li.open > ul {
+    display: block;
+}
+
+.container {
+    flex: 1;
+    padding: 20px;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.post-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.post-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.post-content {
+    margin: 10px 0;
+}
+
+.post-stats {
+    font-size: 14px;
+    color: #666;
+}
+
+.stat1 {
+    font-size: 14px;
+    color: #999;
+}

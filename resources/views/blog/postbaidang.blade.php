@@ -7,13 +7,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Blog')</title>
     <link rel="stylesheet" href="{{ asset('css/blog.style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/sidebar.style.css') }}">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarItems = document.querySelectorAll('.sidebar ul li');
+
+            sidebarItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    this.classList.toggle('open');
+                });
+            });
+        });
+    </script>
 </head>
 <body>
+    <div class="box-all-baidang">
+    <div class="sidebar">
+        <h2 class="sizechu">Danh mục</h2>
+        <ul>
+            <li>
+                <p class="mauchu">Khoa-Phòng</p>
+                <ul>
+                    <li>Hệ thống Thông tin</li>
+                    <li>Khoa Ngôn ngữ và Văn hóa Hàn Quốc</li>
+                    <li>Khoa Ngôn ngữ và Văn hóa Trung Quốc</li>
+                    <li>Khoa Ngôn ngữ và Văn hóa Nhật Bản</li>
+                    <li>Khoa Ngôn ngữ Anh</li>
+                    <li>Khoa Kinh Tế</li>
+                    <li>Khoa Công nghệ – Thông tin</li>
+                    <li>Khoa Điện</li>
+                    <li>Khoa Công nghệ Ô tô</li>
+                    <li>Khoa Chăm sóc sắc đẹp</li>
+                    <li>Khoa Du lịch – Khách sạn</li>
+                </ul>
+                
+            </li>
+            
+            <li>
+                
+                <p class="mauchu">Câu lạc bộ</p>
+                <ul>
+                    <li>CLB Văn nghệ</li>
+                    <li>CLB Thể thao</li>
+                    <li>CLB Tiếng Anh</li>
+                    <li>CLB Tình nguyện</li>
+                    <li>CLB Kỹ năng sống</li>
+                </ul>
+                
+            </li>
+            <li>Khác</li>
+        </ul>
+    </div>
+
     <div class="container">
-        <div class="header">
-            <h1>Danh sách bài viết</h1>
-        </div>
-        
         <div class="post-list">
             @forelse ($postbaidang as $post)
                 <div class="post-item">
@@ -36,6 +82,7 @@
             @endforelse
         </div>
     </div>
+</div>
 </body>
 </html>
 @endsection

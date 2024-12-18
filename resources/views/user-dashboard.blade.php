@@ -26,18 +26,20 @@
         <div class="post-list">
             @forelse ($posts as $post)
                 <div class="post-item">
-                    <div class="post-content">{{ \Illuminate\Support\Str::limit($post->noiDung, 150) }}</div>
-                    <div class="post-stats">
-                        <div class="stat">Số lượt thích: {{ $post->soLike }}</div>
-                        <div class="stat">Số bình luận: {{ $post->soBinhLuan }}</div>
-                    </div>
-                    <div class="post-date">
-                        <strong>Ngày đăng:</strong>
-                        @if($post->ngayDang)
-                            {{ \Carbon\Carbon::parse($post->ngayDang)->format('d/m/Y') }}
-                        @else
-                            N/A
-                        @endif
+                    <div class="post-item">
+                        <div class="post-title">{{ $post->tieuDe }}</div>
+                        <div class="post-content">{{ $post->noiDung }}</div>
+                        <div class="post-stats">
+                            <div class="stat">Số lượt thích: {{ $post->soLike }}</div>
+                            <div class="stat">Số bình luận: {{ $post->soBinhLuan }}</div>
+                        </div>
+                        <div class="stat1">Ngày đăng: 
+                            @if($post->ngayDang)
+                                {{ \Carbon\Carbon::parse($post->ngayDang)->format('d/m/Y') }}
+                            @else
+                                N/A
+                            @endif
+                        </div>
                     </div>
                 </div>
             @empty

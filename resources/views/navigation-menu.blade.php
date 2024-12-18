@@ -4,7 +4,9 @@
         <div class="flex justify-between h-16">
             <!-- Logo -->
             <div class="flex items-center">
-                <a href="/" class="text-lg font-bold text-gray-800">Trang Chủ</a>
+                <a href="/" class="text-lg font-bold text-gray-800">
+                    <img src="{{ asset('img/Logochu.png') }}" alt="Logo" width="200">
+                </a>
             </div>
 
             <!-- Navigation Links -->
@@ -34,14 +36,46 @@
                 </x-dropdown>
                 @else
                 <!-- Hiển thị khi người dùng chưa đăng nhập -->
-                <div class="flex space-x-4">
-                    <a href="{{ route('login') }}" class="text-sm text-gray-700 hover:text-gray-900">
+                <div class="flex" style="justify-content: center; gap: 20px; line-height: 40px">
+                    <!-- Nút Đăng nhập -->
+                    <a href="{{ route('login') }}" 
+                        style="
+                            display: inline-block; 
+                            padding: 12px 24px; 
+                            font-size: 1rem; 
+                            font-weight: 600; 
+                            color: white; 
+                            background: linear-gradient(45deg, #1abc9c, #16a085); 
+                            border-radius: 12px; 
+                            text-decoration: none; 
+                            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+                            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+                        " 
+                        onmouseover="this.style.background='linear-gradient(45deg, #16a085, #1abc9c)'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 10px rgba(0, 0, 0, 0.2)';" 
+                        onmouseout="this.style.background='linear-gradient(45deg, #1abc9c, #16a085)'; this.style.transform='scale(1)'; this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)';">
                         {{ __('Đăng nhập') }}
                     </a>
-                    <a href="{{ route('register') }}" class="text-sm text-gray-700 hover:text-gray-900">
+                
+                    <!-- Nút Đăng ký -->
+                    <a href="{{ route('register') }}" 
+                        style="
+                            display: inline-block; 
+                            padding: 12px 24px; 
+                            font-size: 1rem; 
+                            font-weight: 600; 
+                            color: white; 
+                            background: linear-gradient(45deg, #5dade2, #3498db); 
+                            border-radius: 12px; 
+                            text-decoration: none; 
+                            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+                            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+                        " 
+                        onmouseover="this.style.background='linear-gradient(45deg, #3498db, #5dade2)'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 10px rgba(0, 0, 0, 0.2)';" 
+                        onmouseout="this.style.background='linear-gradient(45deg, #5dade2, #3498db)'; this.style.transform='scale(1)'; this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)';">
                         {{ __('Đăng ký') }}
                     </a>
                 </div>
+                
                 @endauth
             </div>
 
