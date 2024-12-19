@@ -10,14 +10,13 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('content');
+            $table->string('tieuDe');
+            $table->text('noiDung');
+            $table->integer('soLike')->default(0);
+            $table->integer('soBinhLuan')->default(0);
+            $table->timestamp('ngayDang')->nullable();
             $table->timestamps();
         });
     }
-
-    public function down()
-    {
-        Schema::dropIfExists('posts');
-    }
+    
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\BinhLuan;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +15,16 @@ class PostController extends Controller
         
     return view('blog\postbaidang', compact('postbaidang'));
     }
+   public function search(Request $request)
+{
+    $query = $request->input('query');
+    $posts = Post::where('tieuDe', 'like', "%{$query}%")->get();
+
+    return view('Search', compact('posts', 'query'));
+}
+
     
+
     // Hiển thị form tạo bài viết mới
     // public function create()
     // {

@@ -20,7 +20,6 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    overflow: hidden;
 }
 .post-item {
     align-items: center;
@@ -62,4 +61,7 @@ body {
 .stat {
     margin-right: 20px;
     margin-bottom: 20px;
+}
+.blog-link {
+    line-height: 50px;
 }

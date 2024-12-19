@@ -1,0 +1,60 @@
+/* Form tìm kiếm */
+form.d-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Khoảng cách giữa input và button */
+    margin: 0 auto; /* Canh giữa form */
+    max-width: 500px; /* Giới hạn chiều rộng của form */
+}
+
+/* Màu nền và viền của input */
+form input[type="text"] {
+    border: 2px solid #16a085;
+    background-color: #f2f9f8; /* Nền sáng nhẹ */
+    color: #333; /* Màu chữ đen đậm */
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 30px; /* Viền bo tròn */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
+    width: 100%;
+    box-sizing: border-box; /* Đảm bảo chiều rộng đầy đủ */
+}
+
+/* Hiệu ứng khi input focus */
+form input[type="text"]:focus {
+    outline: none;
+
+    /* Loại bỏ viền focus mặc định */
+    border-color: #149179; /* Màu viền khi focus */
+    box-shadow: 0 0 10px rgba(22, 160, 133, 0.5); /* Hiệu ứng bóng mờ */
+}
+
+/* Nút tìm kiếm */
+form button[type="submit"] {
+    background-color: #16a085;
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 12px 20px;
+    border-radius: 30px; /* Viền bo tròn cho nút */
+    cursor: pointer;
+    width: 250px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng nhẹ */
+}
+
+/* Hiệu ứng khi hover trên nút */
+form button[type="submit"]:hover {
+    background-color: #149179;
+    transform: translateY(-2px); /* Nâng nút lên khi hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1); /* Bóng mờ mạnh hơn */
+}
+
+/* Đảm bảo bố cục responsive */
+@media (max-width: 600px) {
+    form.d-flex {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

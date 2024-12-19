@@ -24,4 +24,8 @@ class Post extends Model
         'trangThaiDuyet',
         'userID',
     ];
+    public function comments()
+    {
+        return $this->hasMany(Binhluan::class);
+    }
 }

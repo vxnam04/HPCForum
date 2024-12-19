@@ -51,3 +51,10 @@ Route::resource('/baidang', PostController::class);
 
 Route::get('/', [BlogController::class, 'index'])->name('home');
 
+
+
+Route::get('/posts', [PostController::class, 'search'])->name('posts.search');
+Route::post('/posts/{id}/like', [PostController::class, 'like'])->name('posts.like');
+Route::post('/posts/{id}/comment', [PostController::class, 'comment'])->name('posts.comment');
+
+

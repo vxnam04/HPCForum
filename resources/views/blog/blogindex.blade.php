@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Blog')</title>
     <link rel="stylesheet" href="{{ asset('css/blog.style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/sidebar.style.css') }}">
      <!-- If additional specific styles are needed per page -->
 </head>
 <body>

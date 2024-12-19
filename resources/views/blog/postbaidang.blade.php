@@ -8,6 +8,7 @@
     <title>@yield('title', 'Blog')</title>
     <link rel="stylesheet" href="{{ asset('css/blog.style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/sidebar.style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/userstyle.css') }}">
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const sidebarItems = document.querySelectorAll('.sidebar ul li');

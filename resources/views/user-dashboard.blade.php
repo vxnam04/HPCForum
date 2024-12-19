@@ -3,6 +3,8 @@
 @section('head')
     <link rel="stylesheet" href="{{ asset('css/userstyle.css') }}">
     <link rel="stylesheet" href="{{ asset('css/blog.style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/Search.style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/sidebar.style.css') }}">
 @endsection
 
 @section('content')
@@ -12,8 +14,15 @@
         <nav class="blog-nav">
             <ul class="blog-menu">
                 <li><a href="/baidang" class="blog-link">Bài đăng</a></li>
-                <li><a href="/search" class="blog-link">Tìm kiếm</a></li>
-                <li><a href="/posts" class="blog-link">Thông báo</a></li>
+                
+                <li><a href="#" class="blog-link">Thông báo</a></li>
+                <li>
+                    <form action="{{ route('posts.search') }}" method="GET" class="d-flex">
+                        <input type="text" name="query" class="form-control" placeholder="Nhập từ khóa tìm kiếm..." value="{{ request('query') }}">
+                        <button type="submit" class="btn btn-primary ms-2">Tìm kiếm</button>
+                    </form>
+                    
+                </li>
             </ul>
         </nav>
     </header>
@@ -25,7 +34,7 @@
         
         <div class="post-list">
             @forelse ($posts as $post)
-                <div class="post-item">
+                <div class="post-item1">
                     <div class="post-item">
                         <div class="post-title">{{ $post->tieuDe }}</div>
                         <div class="post-content">{{ $post->noiDung }}</div>
