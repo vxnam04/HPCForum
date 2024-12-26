@@ -1,0 +1,20 @@
+.statbl {
+    padding: 2px 10px;
+    font-size: 15px;
+    color: #16a085;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+.statbl:hover {
+    color: #117763;
+}
+.fa-comment {
+    margin-right: 3px;
+}
+.comment-count {
+    margin-left: 8px;
+}

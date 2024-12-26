@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="{{ asset('css/blog.style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/Search.style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/sidebar.style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nutlike.style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/binhluan.style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
 @endsection
 
 @section('content')
@@ -39,9 +43,14 @@
                         <div class="post-title">{{ $post->tieuDe }}</div>
                         <div class="post-content">{{ $post->noiDung }}</div>
                         <div class="post-stats">
-                            <div class="stat">Số lượt thích: {{ $post->soLike }}</div>
-                            <div class="stat">Số bình luận: {{ $post->soBinhLuan }}</div>
+                            <button class="like-button" onclick="handleLike()">
+                                <i class="fa fa-thumbs-up"></i> Thích<span class="like-count">{{ $post->soLike }}</span>
+                            </button>
+                            <button class="statbl" onclick="handleComment()">
+                                <i class="fa fa-comment"></i> Bình luận<span class="comment-count">{{ $post->soBinhLuan }}</span>
+                            </button>
                         </div>
+                        
                         <div class="stat1">Ngày đăng: 
                             @if($post->ngayDang)
                                 {{ \Carbon\Carbon::parse($post->ngayDang)->format('d/m/Y') }}
