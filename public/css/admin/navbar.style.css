@@ -1,0 +1,106 @@
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center; /* Căn giữa các phần tử theo chiều dọc */
+    background-color: #16a085; /* Màu nền của navbar */
+    color: white;
+    justify-content: space-evenly;
+    width: 100%;
+    line-height: 50px;
+}
+
+/* Navbar brand */
+.navbar-brand {
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+}
+.collapse {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+/* Navbar menu items */
+.navbar-nav {
+    display: flex;
+    gap: 20px; /* Khoảng cách giữa các item */
+    margin-right: 300px;
+    padding-top: 5px;
+}
+
+/* Navbar links */
+.navbar-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border: none;
+}
+.navbar-nav a:hover {
+    border-radius: 4px;
+    border: 2px solid #11725f;
+    color: #ccc;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    transition: all 0.3s ease;
+}
+/* Dropdown */
+.menu-dropdown {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown-toggle:hover + .menu-dropdown {
+    display: block;
+}
+
+/* Active item */
+.item-active {
+    font-weight: bold;
+    color: #ccc;
+}
+
+/* Disabled item */
+.item-disabled {
+    color: gray;
+    pointer-events: none;
+}
+
+/* Search Form */
+.input-search {
+    width: 300px;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    padding-left: 20px;
+}
+
+.search-btn {
+    border-radius: 10px;
+    font-size: 0.8rem;
+    background-color: #fff;
+    color: #16a085;
+    max-width: 200px;
+    padding: 0px 20px;
+    font-weight: bold;
+}
+.search-btn:hover {
+    background-color: #ccc;
+}
+
+/* Header */
+.blog-header {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
+}
