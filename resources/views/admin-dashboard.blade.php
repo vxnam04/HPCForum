@@ -1,11 +1,21 @@
+<<<<<<< HEAD
 @extends('layouts.admin')
 
 @section('head1')
+=======
+@extends('layouts.app')
+
+@section('head')
+>>>>>>> 2edaff562a2c2c0665ec8d76e9f13bf52bd8f844
     <link rel="stylesheet" href="{{ asset('css/admin/navbar.style.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 @endsection
 
+<<<<<<< HEAD
 @section('content1')
+=======
+@section('content')
+>>>>>>> 2edaff562a2c2c0665ec8d76e9f13bf52bd8f844
 <div class="blog-container my-5">
     <header class="blog-header">
         <nav class="navbar navbar-expand-lg navbar-light">
