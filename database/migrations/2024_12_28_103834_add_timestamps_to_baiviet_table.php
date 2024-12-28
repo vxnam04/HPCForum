@@ -12,20 +12,24 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+{
+    Schema::table('baiviet', function (Blueprint $table) {
+        $table->timestamps(); // Thêm created_at và updated_at
+    });
+}
+
+public function down()
+{
+    Schema::table('baiviet', function (Blueprint $table) {
+        $table->dropTimestamps();
+    });
+}
+
 
     /**
      * Reverse the migrations.
      *
      * @return void
      */
-    public function down()
-    {
-        Schema::dropIfExists('posts');
-    }
+
 };

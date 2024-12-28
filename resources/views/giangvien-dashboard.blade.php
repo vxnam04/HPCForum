@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/sidebar.style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nutlike.style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/binhluan.style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/createbaiviet.style.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
 @endsection
@@ -27,8 +28,9 @@
                     </form>
                     
                 </li>
-                {{-- <li><a href="{{ route('posts.create') }}" class="btn btn-success">Tạo bài viết</a></li> --}}
-
+                @if(Auth::check() && Auth::user()->userType === 'GV') <!-- Kiểm tra ID type -->
+                <li><a href="{{ route('posts.create') }}" class="taobaiviet">Tạo bài viết</a></li>
+            @endif
             </ul>
         </nav>
     </header>

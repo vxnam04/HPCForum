@@ -1,0 +1,154 @@
+/* Container của form */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+/* Nút success tương tự nút tìm kiếm */
+.taobaiviet {
+    border: none; /* Không có viền */
+    background-color: #16a085; /* Màu nền giống nút tìm kiếm */
+    color: white; /* Màu chữ trắng */
+    font-size: 16px;
+    padding: 12px 20px;
+    border-radius: 30px; /* Viền bo tròn */
+    cursor: pointer; /* Con trỏ chuột khi hover */
+    width: 100%;
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bóng nhẹ */
+    line-height: 50px; /* Căn chỉnh văn bản */
+}
+
+/* Hiệu ứng khi hover trên nút success */
+.taobaiviet:hover {
+    background-color: #149179; /* Màu nền khi hover */
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Bóng mờ mạnh hơn */
+}
+
+/* Tạo hiệu ứng chuyển động mượt mà khi nhấn */
+.taobaiviet:active {
+    transform: translateY(2px); /* Nút bị đẩy xuống khi nhấn */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bóng mờ nhẹ khi nhấn */
+}
+
+/* Tiêu đề form */
+.container h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Nhãn cho các input */
+.form-label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Các input và textarea */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #495057;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Nút đăng bài */
+.btn-primary {
+    background-color: #16a085;
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 12px 20px;
+    border-radius: 30px; /* Viền bo tròn cho nút */
+    cursor: pointer;
+    width: 250px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng nhẹ */
+}
+
+.btn-primary:hover {
+    background-color: #149179;
+    transform: translateY(-2px); /* Nâng nút lên khi hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1); /* Bóng mờ mạnh hơn */
+}
+
+/* Khoảng cách giữa các trường */
+.mb-3 {
+    margin-bottom: 15px;
+}
+
+/* Form tìm kiếm */
+form.d-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Khoảng cách giữa input và button */
+    margin: 0 auto; /* Canh giữa form */
+    max-width: 500px; /* Giới hạn chiều rộng của form */
+}
+
+/* Màu nền và viền của input */
+form input[type="text"] {
+    border: 2px solid #16a085;
+    background-color: #f2f9f8; /* Nền sáng nhẹ */
+    color: #333; /* Màu chữ đen đậm */
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 30px; /* Viền bo tròn */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
+    width: 100%;
+    box-sizing: border-box; /* Đảm bảo chiều rộng đầy đủ */
+}
+
+/* Hiệu ứng khi input focus */
+form input[type="text"]:focus {
+    outline: none;
+    /* Loại bỏ viền focus mặc định */
+    border-color: #149179; /* Màu viền khi focus */
+    box-shadow: 0 0 10px rgba(22, 160, 133, 0.5); /* Hiệu ứng bóng mờ */
+}
+
+/* Nút tìm kiếm */
+form button[type="submit"] {
+    background-color: #16a085;
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 12px 20px;
+    border-radius: 30px; /* Viền bo tròn cho nút */
+    cursor: pointer;
+    width: 250px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng nhẹ */
+}
+
+/* Hiệu ứng khi hover trên nút */
+form button[type="submit"]:hover {
+    background-color: #149179;
+    transform: translateY(-2px); /* Nâng nút lên khi hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1); /* Bóng mờ mạnh hơn */
+}
+
+/* Đảm bảo bố cục responsive */
+@media (max-width: 600px) {
+    form.d-flex {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

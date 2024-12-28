@@ -11,9 +11,9 @@ class Post extends Model
 
     protected $table = 'baiviet';
     protected $primaryKey = 'baiVietID';
-    public $incrementing = false;
+    public $incrementing = true;
     protected $keyType = 'string';
-
+    public $timestamps = false;
     protected $fillable = [
         'baiVietID',
         'tieuDe',
