@@ -6,7 +6,7 @@
 
 @endsection
 @section('content')
-<div class="container my-5">
+<div class="container1 my-5">
     <h2 class="text-center">Tạo bài viết mới</h2>
     <form action="{{ route('posts.store') }}" method="POST">
         @csrf

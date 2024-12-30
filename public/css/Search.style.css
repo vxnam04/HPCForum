@@ -7,7 +7,10 @@ form.d-flex {
     margin: 0 auto; /* Canh giữa form */
     max-width: 500px; /* Giới hạn chiều rộng của form */
 }
-
+.post-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
 /* Màu nền và viền của input */
 form input[type="text"] {
     border: 2px solid #16a085;

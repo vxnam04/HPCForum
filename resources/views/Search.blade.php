@@ -13,9 +13,6 @@
         <h1 class="blog-title">BLOGGER</h1>
         <nav class="blog-nav">
             <ul class="blog-menu">
-                <li><a href="/baidang" class="blog-link">Bài đăng</a></li>
-            
-                <li><a href="/" class="blog-link">Thông báo</a></li>
                 <li>
                     <form action="{{ route('posts.search') }}" method="GET" class="d-flex">
                         <input type="text" name="query" class="form-control" placeholder="Nhập từ khóa tìm kiếm..." value="{{ request('query') }}">
@@ -27,8 +24,7 @@
         </nav>
     </header>
 
-    <div class="header">
-        <h1>Danh sách bài viết</h1>
+    <div class="header1">
         @if(request('query'))
             <p>Kết quả tìm kiếm cho: <strong>{{ request('query') }}</strong></p>
         @endif
