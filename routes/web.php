@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GiangvienController;
 use App\Http\Controllers\PostController;
-
+use App\Http\Controllers\AdminController;
 // Trang chủ
 Route::get('/', [HomeController::class, 'checkUserType'])->name('home');
 
@@ -13,6 +13,9 @@ Route::get('/', [HomeController::class, 'checkUserType'])->name('home');
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
     Route::view('/admin/dashboard', 'admin-dashboard')->name('admin.dashboard');
+    Route::get('/admin-dashboard', [PostController::class, 'index1'])->name('admin.dashboard');
+    Route::delete('/posts/{baiVietID}', [PostController::class, 'destroy'])->name('posts.destroy');
+    Route::get('/searchadmin', [PostController::class, 'searchadmin'])->name('posts.searchadmin');
 });
 
 

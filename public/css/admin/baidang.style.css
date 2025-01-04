@@ -1,0 +1,49 @@
+.container {
+    gap: 16px; /* Khoảng cách giữa các phần tử */
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.post-list {
+    gap: 16px;
+}
+
+.post-item1 {
+    flex: 1 1 calc(33.33% - 16px); /* Mỗi phần tử chiếm 1/3 chiều rộng trừ khoảng cách */
+    box-sizing: border-box;
+    max-width: 1200px;
+    border: 1px solid #ccc;
+    padding: 16px;
+    background: #f9f9f9;
+    margin-bottom: 20px;
+}
+p {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.post-item {
+    display: flex;
+    justify-content: space-around;
+}
+
+.post-title {
+    margin-bottom: 8px;
+}
+
+.post-content {
+    margin-bottom: 12px;
+}
+
+.post-stats button {
+    margin-right: 8px;
+}
+.stat1 {
+    font-size: 15px;
+}
+.chung {
+    margin-left: 8px;
+}
+.timkiem {
+    background-color: white;
+}

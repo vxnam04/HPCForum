@@ -11,10 +11,15 @@
 <div class="blog-container my-5">
     <header class="blog-header">
         <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">Home </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+          
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link item-active" href="/">Bài Đăng<span class="sr-only">(current)</span></a>
+                        <a class="nav-link item-active" href="#">Bài Đăng<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Tài Khoản</a>
@@ -23,7 +28,7 @@
                         <a class="nav-link item-disabled" href="#">Disabled</a>
                     </li>
                 </ul>
-                        <form action="{{ route('posts.searchadmin') }}" method="GET" class="d-flex">
+                        <form action="{{ route('posts.search') }}" method="GET" class="d-flex">
                             <input type="text" name="query" class="form-control" placeholder="Nhập từ khóa tìm kiếm..." value="{{ request('query') }}">
                             <button type="submit" class="btn btn-primary ms-2">Tìm kiếm</button>
                         </form>

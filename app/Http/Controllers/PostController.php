@@ -15,6 +15,12 @@ class PostController extends Controller
         
     return view('blog\postbaidang', compact('postbaidang'));
     }
+    public function index1() {
+    
+        $posts = Post::all();  // Hoặc câu truy vấn phù hợp để lấy dữ liệu
+            
+        return view('admin-dashboard', compact('posts'));
+        }
    public function search(Request $request)
 {
     $query = $request->input('query');
@@ -53,6 +59,24 @@ class PostController extends Controller
     
         return redirect()->route('baidang')->with('success', 'Bài viết đã được tạo thành công!');
     }
-    
+    // xoa bai viet
+    public function destroy($baiVietID)
+{
+    $post = Post::find($baiVietID);
+    if ($post) {
+        $post->delete();
+        return response()->json(['message' => 'Xóa bài viết thành công.'], 200);
+    } else {
+        return response()->json(['message' => 'Bài viết không tồn tại.'], 404);
+    }
+}
+// tim kiem bai viet trong admin
+public function searchadmin(Request $request)
+{
+    $query = $request->input('query');
+    $posts = Post::where('tieuDe', 'like', "%{$query}%")->get();
+
+    return view('SearchAdmin', compact('posts', 'query'));
+}
 }
 

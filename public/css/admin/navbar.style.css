@@ -10,21 +10,17 @@
 }
 
 /* Navbar brand */
-.navbar-brand {
-    font-size: 1.5rem;
-    color: white;
-    text-decoration: none;
-}
+
 .collapse {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 10px;
 }
 /* Navbar menu items */
 .navbar-nav {
     display: flex;
     gap: 20px; /* Khoảng cách giữa các item */
-    margin-right: 300px;
+    margin-right: 600px;
     padding-top: 5px;
 }
 
