@@ -7,15 +7,18 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-right: 20px;
-    margin-left: 10px;
     margin-bottom: 10px;
 }
 .like-button:hover {
-    color: #117763;
+    color: #0f6050;
 }
 .like-button .fa-thumbs-up {
     margin-right: 3px;
 }
 .like-count {
     margin-left: 8px;
+}
+.like-button.liked {
+    background-color: #ccc;
+    cursor: not-allowed;
 }

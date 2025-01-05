@@ -4,6 +4,8 @@
     <link rel="stylesheet" href="{{ asset('css/userstyle.css') }}">
     <link rel="stylesheet" href="{{ asset('css/blog.style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/Search.style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nutlike.style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 @endsection
 
 
@@ -51,7 +53,9 @@
                                 </div>
                                 
                                 <div class="post-stats">
-                                    <div class="stat">Số lượt thích: {{ $post->soLike }}</div>
+                                    <button class="like-button" onclick="handleLike({{ $post->baiVietID }}, this)">
+                                        <i class="fa fa-thumbs-up"></i> Thích<span class="like-count">{{ $post->soLike }}</span>
+                                    </button>
                                     <div class="stat">Số bình luận: {{ $post->soBinhLuan }}</div>
                                 </div>
                                 <div class="stat1">Ngày đăng: 
@@ -91,6 +95,28 @@
             element.innerText = 'Xem thêm'; // Đổi nút lại thành "xem thêm"
         }
     }
+    function handleLike(baiVietID, button) {
+    fetch(`/posts/${baiVietID}/like`, {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            const likeCount = button.querySelector('.like-count');
+            likeCount.innerText = data.newLikeCount;
+        } else {
+            alert('Có lỗi xảy ra. Vui lòng thử lại.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Có lỗi xảy ra. Vui lòng thử lại.');
+    });
+}
 </script>
 
 @endsection

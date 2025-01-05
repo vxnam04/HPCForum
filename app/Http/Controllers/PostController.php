@@ -83,6 +83,20 @@ public function show($baiVietID)
     $post = Post::findOrFail($baiVietID); // Lấy bài viết theo ID
     return view('postshow', compact('post')); // Trả về view chi tiết bài viết
 }
+// nut like
+public function likePost($baiVietID)
+{
+    $post = Post::findOrFail($baiVietID);
+    
+    // Tăng số lượng like
+    $post->soLike += 1;
+    $post->save();
+
+    return response()->json([
+        'success' => true,
+        'newLikeCount' => $post->soLike,
+    ]);
+}
 
 }
 

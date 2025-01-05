@@ -49,7 +49,7 @@
                         </div>
                         
                         <div class="post-stats">
-                            <button class="like-button" onclick="handleLike()">
+                            <button class="like-button" onclick="handleLike({{ $post->baiVietID }}, this)">
                                 <i class="fa fa-thumbs-up"></i> Thích<span class="like-count">{{ $post->soLike }}</span>
                             </button>
                             <button class="statbl" onclick="handleComment()">
@@ -90,6 +90,28 @@
             element.innerText = 'Xem thêm'; // Đổi nút lại thành "xem thêm"
         }
     }
+    function handleLike(baiVietID, button) {
+    fetch(`/posts/${baiVietID}/like`, {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            const likeCount = button.querySelector('.like-count');
+            likeCount.innerText = data.newLikeCount;
+        } else {
+            alert('Có lỗi xảy ra. Vui lòng thử lại.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Có lỗi xảy ra. Vui lòng thử lại.');
+    });
+}
 </script>
 
 @endsection

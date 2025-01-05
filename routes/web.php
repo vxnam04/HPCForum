@@ -48,3 +48,6 @@ Route::prefix('baidang')->group(function () {
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::get('/baidang', [PostController::class, 'index'])->name('baidang');
+// nut like
+
+Route::post('/posts/{baiVietID}/like', [PostController::class, 'likePost'])->name('posts.like');
