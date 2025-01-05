@@ -46,7 +46,11 @@
             <tbody>
                 @forelse ($posts as $post)
                     <tr>
-                        <td class="ndtd">{{ $post->tieuDe }}</td>
+                        <td class="post-title ">
+                        <a href="{{ route('posts.show', ['baiVietID' => $post->baiVietID]) }}" class="post-title-link">
+                            {{ $post->tieuDe }}
+                        </a>
+                        </td>
                         <td class="nd">{{ $post->noiDung }}</td>
                         <td>
                             <span class="like-button" onclick="handleLike()">

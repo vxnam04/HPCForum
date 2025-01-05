@@ -27,6 +27,7 @@
                 <!-- Nội dung chính của từng view -->
                 @yield('content')
                 @yield('contentbaidang')
+                @yield('js')
             </main>
         
             <footer>

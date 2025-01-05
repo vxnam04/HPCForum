@@ -42,6 +42,8 @@ Route::prefix('baidang')->group(function () {
     Route::get('/search', [PostController::class, 'search'])->name('posts.search');
     Route::post('/{id}/like', [PostController::class, 'like'])->name('posts.like');
     Route::post('/{id}/comment', [PostController::class, 'comment'])->name('posts.comment');
+    Route::get('/posts/{baiVietID}', [PostController::class, 'show'])->name('posts.show');
+
 });
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');

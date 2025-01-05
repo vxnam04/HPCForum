@@ -39,32 +39,62 @@
         
         <div class="post-list">
             @forelse ($posts as $post)
-                <div class="post-item1">
-                    <div class="post-item">
+            <div class="post-item1">
+                <div class="post-item">
+                    <a href="{{ route('posts.show', ['baiVietID' => $post->baiVietID]) }}" class="post-title-link">
                         <div class="post-title">{{ $post->tieuDe }}</div>
-                        <div class="post-content">{{ $post->noiDung }}</div>
-                        <div class="post-stats">
-                            <button class="like-button" onclick="handleLike()">
-                                <i class="fa fa-thumbs-up"></i> Thích<span class="like-count">{{ $post->soLike }}</span>
-                            </button>
-                            <button class="statbl" onclick="handleComment()">
-                                <i class="fa fa-comment"></i> Bình luận<span class="comment-count">{{ $post->soBinhLuan }}</span>
-                            </button>
-                        </div>
-                        
-                        <div class="stat1">Ngày đăng: 
-                            @if($post->ngayDang)
-                                {{ \Carbon\Carbon::parse($post->ngayDang)->format('d/m/Y') }}
-                            @else
-                                N/A
-                            @endif
-                        </div>
+                    </a>
+                    <div class="post-content">
+                        <span class="content-preview">{{ \Illuminate\Support\Str::limit($post->noiDung, 250, '...') }}</span>
+                        <span class="content-full d-none">{{ $post->noiDung }}</span>
+                        @if(strlen($post->noiDung) > 200)
+                            <span class="xemthem" onclick="toggleContent(this)">xem thêm</span>
+                        @endif
+                    </div>
+                    
+                    
+                    <div class="post-stats">
+                        <button class="like-button" onclick="handleLike()">
+                            <i class="fa fa-thumbs-up"></i> Thích<span class="like-count">{{ $post->soLike }}</span>
+                        </button>
+                        <button class="statbl" onclick="handleComment()">
+                            <i class="fa fa-comment"></i> Bình luận<span class="comment-count">{{ $post->soBinhLuan }}</span>
+                        </button>
+                    </div>
+                    <div class="stat1">Ngày đăng: 
+                        @if($post->ngayDang)
+                            {{ \Carbon\Carbon::parse($post->ngayDang)->format('d/m/Y') }}
+                        @else
+                            N/A
+                        @endif
                     </div>
                 </div>
+            </div>
+            
             @empty
                 <p class="post-footer">Không có bài viết nào.</p>
             @endforelse
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+<script>
+    function toggleContent(element) {
+        const preview = element.previousElementSibling.previousElementSibling; // .content-preview
+        const fullContent = element.previousElementSibling; // .content-full
+
+        if (fullContent.classList.contains('d-none')) {
+            preview.classList.add('d-none');
+            fullContent.classList.remove('d-none');
+            element.innerText = 'Thu gọn'; // Đổi nút thành "thu gọn"
+        } else {
+            fullContent.classList.add('d-none');
+            preview.classList.remove('d-none');
+            element.innerText = 'Xem thêm'; // Đổi nút lại thành "xem thêm"
+        }
+    }
+</script>
+
 @endsection

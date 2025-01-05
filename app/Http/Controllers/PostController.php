@@ -78,5 +78,11 @@ public function searchadmin(Request $request)
 
     return view('SearchAdmin', compact('posts', 'query'));
 }
+public function show($baiVietID)
+{
+    $post = Post::findOrFail($baiVietID); // Lấy bài viết theo ID
+    return view('postshow', compact('post')); // Trả về view chi tiết bài viết
+}
+
 }
 

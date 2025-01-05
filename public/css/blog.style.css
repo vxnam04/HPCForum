@@ -84,3 +84,11 @@ body {
     color: white;
     text-decoration: none;
 }
+.d-none {
+    display: none;
+}
+.xemthem {
+    font-size: 14px;
+    opacity: 0.6;
+    margin-left: 5px;
+}

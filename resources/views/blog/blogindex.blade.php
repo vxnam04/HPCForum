@@ -20,8 +20,17 @@
             @forelse ($latestPosts as $post)
                 <div class="post-item1">
                     <div class="post-item">
-                        <div class="post-title">{{ $post->tieuDe }}</div>
-                        <div class="post-content">{{ $post->noiDung }}</div>
+                        <a href="{{ route('posts.show', ['baiVietID' => $post->baiVietID]) }}" class="post-title-link">
+                            <div class="post-title">{{ $post->tieuDe }}</div>
+                        </a>
+                        <div class="post-content">
+                            <span class="content-preview">{{ \Illuminate\Support\Str::limit($post->noiDung, 250, '...') }}</span>
+                            <span class="content-full d-none">{{ $post->noiDung }}</span>
+                            @if(strlen($post->noiDung) > 200)
+                                <span class="xemthem" onclick="toggleContent(this)">xem thêm</span>
+                            @endif
+                        </div>
+                        
                         <div class="post-stats">
                             <div class="stat">Số lượt thích: {{ $post->soLike }}</div>
                             <div class="stat">Số bình luận: {{ $post->soBinhLuan }}</div>
