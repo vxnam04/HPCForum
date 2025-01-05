@@ -15,7 +15,6 @@
 @section('content')
 <div class="blog-container my-5">
     <header class="blog-header">
-        <h1 class="blog-title">BLOGGER</h1>
         <nav class="blog-nav">
             <ul class="blog-menu">
                 <li><a href="/baidang" class="blog-link">Bài đăng</a></li>
@@ -36,9 +35,7 @@
     </header>
 
     <div class="container">
-        <div class="header">
-            <h1>Danh sách bài viết</h1>
-        </div>
+
         
         <div class="post-list">
             @forelse ($posts as $post)

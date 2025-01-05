@@ -16,6 +16,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/admin-dashboard', [PostController::class, 'index1'])->name('admin.dashboard');
     Route::delete('/posts/{baiVietID}', [PostController::class, 'destroy'])->name('posts.destroy');
     Route::get('/searchadmin', [PostController::class, 'searchadmin'])->name('posts.searchadmin');
+    Route::get('/users', [UserController::class, 'index2'])->name('users.index');
+    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::get('/users/{id}/roles', [UserController::class, 'editRoles'])->name('users.editRoles');
+    Route::put('/users/{id}/roles', [UserController::class, 'updateRoles'])->name('users.updateRoles');
+
 });
 
 

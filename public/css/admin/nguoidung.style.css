@@ -40,13 +40,8 @@ h2 {
 }
 .hd {
     color: rgb(212, 27, 27);
+    font-weight: bold;
 }
-.nd {
-    max-width: 320px;
-}
-.ndtd {
-    max-width: 160px;
-}
-.chung {
-    margin-left: 7px;
+.fa {
+    margin-right: 7px;
 }

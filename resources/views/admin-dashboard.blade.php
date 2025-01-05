@@ -2,9 +2,9 @@
 
 @section('head1')
 <link rel="stylesheet" href="{{ asset('css/admin/baidang.style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/admin/navbar.style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/admin/search.style.css') }}">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('css/admin/navbar.style.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin/search.style.css') }}">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 @endsection
 
 @section('content1')
@@ -17,7 +17,7 @@
                         <a class="nav-link item-active" href="/">Bài Đăng<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tài Khoản</a>
+                        <a class="nav-link" href="{{ route('users.index') }}">Tài Khoản</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link item-disabled" href="#">Disabled</a>
@@ -32,81 +32,82 @@
     </header>
 
     <div class="container">    
-        <div class="post-list">
-            @forelse ($posts as $post)
-                <div class="post-item1">
-                    <div class="post-item">
-                        <div class="post-title">
-                            <p>Tiêu đề</p>
-                            {{ $post->tieuDe }}
-                        </div>
-                        <div class="post-content">
-                            <p>Nội dung</p>
-                            {{ $post->noiDung }}
-                        </div>
-                        <div class="post-stats">
-                            <p>Số Like</p>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Tiêu Đề</th>
+                    <th>Nội Dung</th>
+                    <th>Số Like</th>
+                    <th>Số Bình Luận</th>
+                    <th>Ngày Đăng</th>
+                    <th>Tùy Chỉnh</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($posts as $post)
+                    <tr>
+                        <td class="ndtd">{{ $post->tieuDe }}</td>
+                        <td class="nd">{{ $post->noiDung }}</td>
+                        <td>
                             <span class="like-button" onclick="handleLike()">
                                 <i class="fa fa-thumbs-up"></i> Thích<span class="like-count chung">{{ $post->soLike }}</span>
                             </span>
-                        </div>
-                        <div class="post-stats">
-                            <p>Số bình luận</p>
+                        </td>
+                        <td>
                             <span class="statbl" onclick="handleComment()">
                                 <i class="fa fa-comment"></i> Bình luận<span class="comment-count chung">{{ $post->soBinhLuan }}</span>
                             </span>
-                        </div>
-                        <div class="stat1">
-                            <p>Ngày đăng</p>
+                        </td>
+                        <td>
                             @if($post->ngayDang)
                                 {{ \Carbon\Carbon::parse($post->ngayDang)->format('d/m/Y') }}
                             @else
                                 N/A
                             @endif
-                        </div>
-                        <div class="post-stats">
-                            <p>Xóa bài viết</p>
-                            <button class="delete-button" onclick="handleDelete({{ $post->baiVietID}})">
+                        </td>
+                        <td>
+                            <button class="delete-button hd" onclick="handleDelete({{ $post->baiVietID}})">
                                 <i class="fa fa-trash"></i> Xóa bài viết
                             </button>
-                        </div>
-                    </div>
-                </div>
-            @empty
-                <p class="post-footer">Không có bài viết nào.</p>
-            @endforelse
-        </div>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="6" class="text-center">Không có bài viết nào.</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
-    
 </div>
 @endsection
+
 @section('js')
 <script>
     function handleDelete(postId) {
-    if (confirm("Bạn có chắc chắn muốn xóa bài viết này?")) {
-        // Gửi yêu cầu xóa bài viết đến server bằng phương thức DELETE
-        fetch(`/posts/${postId}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-            },
-        })
-        .then(response => {
-            if (response.ok) {
-                alert("Xóa bài viết thành công!");
-                // Tải lại trang hoặc cập nhật giao diện
-                location.reload(); 
-            } else {
-                alert("Đã xảy ra lỗi khi xóa bài viết.");
-            }
-        })
-        .catch(error => {
-            console.error("Lỗi:", error);
-            alert("Không thể kết nối tới server.");
-        });
+        if (confirm("Bạn có chắc chắn muốn xóa bài viết này?")) {
+            // Gửi yêu cầu xóa bài viết đến server bằng phương thức DELETE
+            fetch(`/posts/${postId}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                },
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Xóa bài viết thành công!");
+                    // Tải lại trang hoặc cập nhật giao diện
+                    location.reload(); 
+                } else {
+                    alert("Đã xảy ra lỗi khi xóa bài viết.");
+                }
+            })
+            .catch(error => {
+                console.error("Lỗi:", error);
+                alert("Không thể kết nối tới server.");
+            });
+        }
     }
-}
-
 </script>
 @endsection
