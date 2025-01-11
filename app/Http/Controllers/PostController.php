@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\BinhLuan;
+
+use Illuminate\Support\Facades\Auth;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -97,6 +99,50 @@ public function likePost($baiVietID)
         'newLikeCount' => $post->soLike,
     ]);
 }
+public function showComments($baiVietID)
+{
+    $post = Post::findOrFail($baiVietID);
+    $comments = Comment::where('baiVietID', $baiVietID)->get();
+
+    return response()->json([
+        'post' => [
+            'tieuDe' => $post->tieuDe,
+            'noiDung' => $post->noiDung,
+        ],
+        'comments' => $comments->map(function ($comment) {
+            return [
+                'noiDung' => $comment->noiDung,
+                'ngayDang' => \Carbon\Carbon::parse($comment->created_at)->format('d/m/Y'),
+            ];
+        })
+    ]);
+}
+
+public function storeComment(Request $request, $baiVietID)
+{
+    // Validate dữ liệu
+    $validatedData = $request->validate([
+        'noiDung' => 'required|string|max:1000',
+    ]);
+
+    // Tạo mới bình luận
+    $comment = new Comment();
+    $comment->baiVietID = $baiVietID;
+    $comment->noiDung = $validatedData['noiDung'];
+    $comment->ngayDang = now();
+    $comment->user_id = Auth::id(); // Nếu cần liên kết với người dùng
+    $comment->save();
+
+    // Lấy lại danh sách bình luận
+    $comments = Comment::where('baiVietID', $baiVietID)->get();
+
+    return response()->json([
+        'success' => true,
+        'comments' => $comments,
+    ]);
+}
+
+
 
 }
 

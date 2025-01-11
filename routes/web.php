@@ -51,3 +51,9 @@ Route::get('/baidang', [PostController::class, 'index'])->name('baidang');
 // nut like
 
 Route::post('/posts/{baiVietID}/like', [PostController::class, 'likePost'])->name('posts.like');
+Route::get('/posts/{baiVietID}/comments', [PostController::class, 'showComments'])->name('posts.comments');
+// Route để lấy và gửi bình luận
+
+Route::post('/posts/{baiVietID}/comments', [PostController::class, 'storeComment'])->name('posts.comments.store');
+
+
