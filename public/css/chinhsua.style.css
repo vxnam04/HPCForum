@@ -1,0 +1,58 @@
+/* .chinhsua {
+    position: absolute;
+    top: -10px;
+    right: 0px;
+    color: #333;
+} */
+.post-titleto {
+    margin-bottom: 10px;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+.menuButton {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: -10px;
+    right: 10px;
+}
+/* CSS cho .chinhsua */
+.chinhsua {
+    position: relative; /* Giữ phần menu con tương đối với container */
+    display: inline-block;
+}
+
+/* Nút menuButton */
+/* .menuButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 5px;
+} */
+
+/* Menu ẩn mặc định */
+.hidden {
+    display: none;
+}
+
+/* Menu hiển thị khi bật */
+.show {
+    display: block;
+    position: absolute;
+    top: 30px; /* Điều chỉnh để căn chỉnh menu bên dưới nút */
+    right: 0; /* Menu căn phải */
+    background-color: #fff; /* Nền trắng */
+    border: 1px solid #ccc; /* Viền nhẹ */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Tạo bóng mờ */
+    padding: 10px;
+    z-index: 100; /* Bảo đảm menu hiển thị trên các phần khác */
+    width: 180px;
+    text-align: center;
+    font-size: 0.8rem;
+    border-radius: 10px;
+}

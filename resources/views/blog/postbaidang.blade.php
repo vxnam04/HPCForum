@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/sidebar.style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/userstyle.css') }}">
     <link rel="stylesheet" href="{{ asset('css/nutlike.style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/binhluan.style.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -81,7 +82,9 @@
                         <button class="like-button" onclick="handleLike({{ $post->baiVietID }}, this)">
                             <i class="fa fa-thumbs-up"></i> Thích<span class="like-count">{{ $post->soLike }}</span>
                         </button>
-                        <div class="stat">Số bình luận: {{ $post->soBinhLuan }}</div>
+                        <button class="statbl" onclick="openCommentModal({{ $post->baiVietID }})">
+                            <i class="fa fa-comment"></i> Bình luận<span class="comment-count">{{ $post->soBinhLuan }}</span>
+                        </button>
                     </div>
                     <div class="stat1">Ngày đăng: 
                         @if($post->ngayDang)
@@ -139,6 +142,102 @@
         alert('Có lỗi xảy ra. Vui lòng thử lại.');
     });
 }
+function openCommentModal(baiVietID) {
+    const modal = document.getElementById('commentModal');
+    modal.setAttribute('data-baiVietID', baiVietID);
+
+    fetch(`/posts/${baiVietID}/comments`)
+        .then(response => {
+            if (!response.ok) {
+                // Nếu phản hồi không thành công, ném lỗi
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            let noiDungGioiHan = data.post.noiDung.length > 200 
+                ? data.post.noiDung.slice(0, 200) + '...' 
+                : data.post.noiDung;
+
+            let modalContent = `
+                <h2>${data.post.tieuDe}</h2>
+                <p>${noiDungGioiHan}</p>
+                <div class="comments-section">
+                    <h3>Bình luận</h3>
+            `;
+            data.comments.forEach(comment => {
+                modalContent += `
+                    <div class="comment">
+                        <p>${comment.noiDung}</p>
+                        <p><small>${comment.ngayDang}</small></p>
+                    </div>
+                `;
+            });
+            modalContent += `</div>`;
+            document.getElementById('modalContent').innerHTML = modalContent;
+            modal.style.display = 'block';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Có lỗi xảy ra khi tải thông tin.');
+        });
+}
+
+
+
+function closeCommentModal() {
+    // Đóng modal
+    document.getElementById('commentModal').style.display = 'none';
+}
+function submitComment(event) {
+    event.preventDefault();
+    const commentContent = document.getElementById('commentContent').value;
+    const modal = document.getElementById('commentModal');
+    const baiVietID = modal.getAttribute('data-baiVietID'); // Lấy ID bài viết từ modal
+
+    fetch(`/posts/${baiVietID}/comments`, {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            noiDung: commentContent,
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            updateCommentList(data.comments); // Cập nhật danh sách bình luận
+            document.getElementById('commentContent').value = ''; // Xóa nội dung form
+        } else {
+            alert('Có lỗi xảy ra khi gửi bình luận.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Có lỗi xảy ra khi gửi bình luận.');
+    });
+}
+
+
+function updateCommentList(comments) {
+    const commentSection = document.querySelector('.comments-section');
+    commentSection.innerHTML = ''; // Xóa danh sách bình luận cũ
+
+    comments.forEach(comment => {
+        const commentElement = document.createElement('div');
+        commentElement.classList.add('comment');
+        commentElement.innerHTML = `
+            <p>${comment.noiDung}</p>
+            <p><small>${comment.ngayDang}</small></p>
+        `;
+        commentSection.appendChild(commentElement);
+    });
+}
+
+
+
 </script>
 
 @endsection
